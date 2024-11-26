@@ -21,8 +21,10 @@ Die „Three Ways“ beeinflussen die Arbeitsweise eines Unternehmens durch:
 
 
 #### **3. Was beschreibt der „First Way: Systems Thinking“?**
+![](/Bilder/first%20way.png)
 
- „Systems Thinking“ beschreibt die Betrachtung des gesamten Systems, das die Entwicklung, den Betrieb und die Bereitstellung von Software umfasst. Es fördert ein Verständnis dafür, wie Änderungen nahtlos durch das System fliessen können, indem Silos aufgebrochen, Abhängigkeiten sichtbar gemacht und unnötige Hürden beseitigt werden. Es verändert die Zusammenarbeit, indem es Teams hilft, die Auswirkungen ihrer Arbeit auf das Gesamtsystem zu erkennen.
+
+ „Systems Thinking“ beschreibt die Betrachtung des gesamten Systems, das die Entwicklung, den Betrieb und die Bereitstellung von Software umfasst. Es fördert ein Verständnis dafür, wie Änderungen von der Entwicklung (Dev) zum Betrieb (Ops) nahtlos durch das System fliessen können, indem Silos aufgebrochen, Abhängigkeiten sichtbar gemacht und unnötige Hürden beseitigt werden. Es verändert die Zusammenarbeit, indem es Teams hilft, die Auswirkungen ihrer Arbeit auf das Gesamtsystem zu erkennen.
 
 
 
