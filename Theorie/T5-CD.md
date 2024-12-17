@@ -119,9 +119,56 @@ Quelle: https://www.splunk.com/en_us/blog/learn/continuous-monitoring.html
 
 **9. Wie werden Passwörter sicher gespeichert?**
 
-Die sichere Speicherung von Passwörtern ist ein essenzieller Bestandteil moderner IT-Sicherheit. Passwörter im Klartext zu speichern, ist ein schwerwiegender Fehler, der bei einem Datenbankleck dazu führt, dass Angreifer sofort Zugriff auf sensible Konten erhalten. Daher ist es wichtig, Passwörter so zu schützen, dass sie selbst im Falle eines Datenbankangriffs unbrauchbar sind.
+Um Passwörter sicher zu speichern, empfiehlt es sich, einen vertrauenswürdigen Passwort-Manager zu verwenden. Diese Programme verschlüsseln Ihre Zugangsdaten und ermöglichen es, für jedes Konto ein individuelles, starkes Passwort zu erstellen. Sie müssen sich dann nur noch ein Master-Passwort merken, das den Zugriff auf den Passwort-Manager schützt. 
 
-Ein bewährter Ansatz ist die Verwendung von Hashing. Hashing ist eine Einwegfunktion, die ein Passwort in eine scheinbar zufällige Zeichenfolge umwandelt. Dabei wird nur der Hashwert gespeichert, niemals das eigentliche Passwort. Sollte ein Nutzer später sein Passwort eingeben, wird es erneut gehasht und mit dem gespeicherten Wert verglichen. Neben dem Hashing wird das sogenannte Salting eingesetzt. Ein Salt ist eine zufällig generierte Zeichenfolge, die jedem Passwort hinzugefügt wird, bevor es gehasht wird. Dadurch wird verhindert, dass Angreifer vorgefertigte Tabellen von Hashwerten (sogenannte Rainbow Tables) nutzen können, um Passwörter zurückzurechnen. Selbst wenn zwei Nutzer dasselbe Passwort wählen, erzeugt der individuelle Salt unterschiedliche Hashes, was die Sicherheit weiter erhöht.
 
-Zusätzlich kann ein Pepper verwendet werden. Ein Pepper ist ein geheimer globaler Schlüssel, der ebenfalls zum Passwort hinzugefügt wird, bevor es gehasht wird. Im Gegensatz zum Salt wird der Pepper nicht in der Datenbank gespeichert, sondern an einem sicheren Ort, wie z. B. in einem Hardware-Sicherheitsmodul. Dies bietet zusätzlichen Schutz, falls die Datenbank kompromittiert wird.
+Es ist ratsam, Passwörter nicht im Browser zu speichern, da diese von Schadsoftware leichter ausgelesen werden können. Stattdessen bieten eigenständige Passwort-Manager einen höheren Sicherheitsstandard. 
+
+
+Zusätzlich zur Verwendung eines Passwort-Managers sollte für wichtige Konten die Zwei-Faktor-Authentifizierung aktiviert werden. Dieses Verfahren erhöht die Sicherheit, indem es neben dem Passwort einen weiteren Bestätigungsfaktor erfordert, wie beispielsweise einen Code, der an ein mobiles Gerät gesendet wird. 
+
+![](/Bilder/passwords.webp)
+
+Bildquelle: https://cdn.prod.website-files.com/65f7f0027cb1900111ab2e6f/66dacaddaef590ecba2db584_DS_Blog_Admin-Passwoerter-sicher-speichern.webp
+
+Quelle: https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Accountschutz/Sichere-Passwoerter-erstellen/Passwort-Manager/passwort-manager_node.html
+
+**10. Welche Arten von Deployment gibt es? Geben Sie alle Ihre Ideen an. Sie müssen dann nicht alle umsetzen, aber finden Sie heraus was alles möglich ist (z.B. Container via Docker, Container via Docker swarm, Direkt auf Server code kompilieren, etc). geben Sie dabei jeweils auch an, welche Software/Umgebung dazu notwendig ist.**
+
+
+1. **Containerisierung mit Docker**:
+   - Docker ermöglicht die Erstellung und Verwaltung von Containern, die Anwendungen und ihre Abhängigkeiten isoliert ausführen. 
+
+   Quelle: https://www.studysmarter.de/ausbildung/ausbildung-in-it/fachberater-softwaretechniken/deployment/
+
+2. **Container-Orchestrierung mit Docker Swarm**:
+   - Docker Swarm dient zur Verwaltung und Skalierung von Docker-Containern über mehrere Hosts hinweg. 
+
+   Quelle: https://docs.docker.com/guides/orchestration/
+
+3. **Container-Orchestrierung mit Kubernetes**:
+   - Kubernetes ist ein Open-Source-System zur Automatisierung der Bereitstellung, Skalierung und Verwaltung von containerisierten Anwendungen. 
+
+   Quelle: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+
+4. **Direkte Bereitstellung auf Servern (Bare-Metal Deployment)**:
+   - Bei dieser Methode wird der Code direkt auf physischen oder virtuellen Servern kompiliert und ausgeführt. 
+
+   Quelle: https://www.techtarget.com/searchitoperations/definition/bare-metal-provisioning
+
+5. **Virtuelle Maschinen (VMs)**:
+   - Anwendungen werden innerhalb von VMs bereitgestellt, die auf Hypervisoren wie VMware, Hyper-V oder KVM laufen. 
+
+   Quelle: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-39D19B2B-A11C-42AE-AC80-DDA8682AB42C.html
+
+6. **Platform as a Service (PaaS)**:
+   - PaaS-Anbieter wie Heroku, Google App Engine oder Microsoft Azure stellen Infrastruktur und Laufzeitumgebungen für Anwendungen bereit. 
+
+Quelle: https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-paas
+
+
+7. **Serverless Deployment**:
+    - Anwendungen werden als Funktionen bereitgestellt, die von Cloud-Anbietern verwaltet werden, ohne dass Serverprovisionierung erforderlich ist. Ein Beispiel wäre AWS Lamda.
+
+    Quelle: https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
