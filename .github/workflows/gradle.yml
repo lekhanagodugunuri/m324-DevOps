@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-gradle
 
       - name: Init gradle wrapper
-        run: gradle wrapper
+        run: /Code/gradle wrapper
   
       - name: Grant execute permissions for Gradle Wrapper
         run: chmod +x ./Code/gradlew
