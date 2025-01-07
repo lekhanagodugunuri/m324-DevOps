@@ -29,15 +29,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle
-
-      - name: Init gradle wrapper
-        run: /Code/gradle wrapper
   
       - name: Grant execute permissions for Gradle Wrapper
         run: chmod +x ./Code/gradlew
 
       - name: Build with Gradle
-        run: /Code/gradlew build
+        run: ./gradlew build
+        working-directory: ./Code
 
       - name: Run Tests
-        run: /Code/gradlew test
+        run: ./gradlew test
+        working-directory: ./Code
