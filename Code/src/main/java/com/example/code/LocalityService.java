@@ -1,7 +1,5 @@
-package com.example.localitymanager.service;
+package com.example.code;
 
-import com.example.localitymanager.model.Locality;
-import com.example.localitymanager.repository.LocalityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

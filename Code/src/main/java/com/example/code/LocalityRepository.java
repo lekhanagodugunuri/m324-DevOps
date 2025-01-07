@@ -1,6 +1,5 @@
-package com.example.localitymanager.repository;
+package com.example.code;
 
-import com.example.localitymanager.model.Locality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

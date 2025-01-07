@@ -1,7 +1,5 @@
-package com.example.localitymanager.controller;
+package com.example.code;
 
-import com.example.localitymanager.model.Locality;
-import com.example.localitymanager.service.LocalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
