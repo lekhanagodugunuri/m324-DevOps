@@ -34,9 +34,9 @@ jobs:
         run: chmod +x ./Code/gradlew
 
       - name: Build with Gradle
-        run: ./Code/gradlew build
+        run: /Code/gradlew build
         working-directory: ./code
 
       - name: Run Tests
-        run: ./Code/gradlew test
+        run: /Code/gradlew test
         working-directory: ./code
