@@ -1,4 +1,4 @@
-package com.example.localitymanager.model;
+package com.example.code;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
