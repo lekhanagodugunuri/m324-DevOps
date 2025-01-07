@@ -31,10 +31,10 @@ jobs:
             ${{ runner.os }}-gradle
 
       - name: Grant execute permissions for Gradle Wrapper
-        run: chmod +x ./Code/gradle/wrapper/gradlew
+        run: chmod +x ./Code/gradlew
 
       - name: Build with Gradle
-        run: ./Code/gradle/wrapper/gradlew build
+        run: ./Code/gradlew build
 
       - name: Run Tests
-        run: ./Code/gradle/wrapper/gradlew test
+        run: ./Code/gradlew test
