@@ -63,7 +63,8 @@ Quelle: https://www.jetbrains.com/de-de/teamcity/ci-cd-guide/continuous-integrat
   
 Es werden zwei identische Produktionsumgebungen betrieben – "Blue" (aktuell live) und "Green" (neue Version). Die neue Version wird in der Green-Umgebung bereitgestellt und getestet. Nach erfolgreichem Test wird der Datenverkehr auf die Green-Umgebung umgeschaltet, wodurch die Green-Umgebung zur neuen Live-Umgebung wird. Dies ermöglicht ein schnelles Rollback, indem der Traffic zurück auf die Blue-Umgebung geleitet wird. 
 
-![](/Bilder/BlueGreenDeployment.png)
+![alt text](../Media/BlueGreenDeployment.png)
+
 
 Bildquelle: https://candost.blog/images/content/posts/blue-green-deployment/BlueGreenDeployment5.png
 
@@ -71,7 +72,7 @@ Bildquelle: https://candost.blog/images/content/posts/blue-green-deployment/Blue
 
 Canary Deployment: Neue Softwareversionen werden schrittweise an eine kleine Benutzergruppe ausgerollt. Wenn keine Probleme auftreten, wird die Verteilung schrittweise auf die gesamte Benutzerbasis ausgeweitet. Dies minimiert das Risiko, da potenzielle Fehler nur einen kleinen Teil der Nutzer betreffen. 
 
-![](/Bilder/canary.png)
+![alt text](../Media/canary.png)
 
 Bildquelle: https://cdn.prod.website-files.com/5c9200c49b1194323aff7304/66b5cb5eb11a27792da63da7_63074d50cbaa553b731d81d6_Canary_Diagram-2.png
 
@@ -127,7 +128,7 @@ Es ist ratsam, Passwörter nicht im Browser zu speichern, da diese von Schadsoft
 
 Zusätzlich zur Verwendung eines Passwort-Managers sollte für wichtige Konten die Zwei-Faktor-Authentifizierung aktiviert werden. Dieses Verfahren erhöht die Sicherheit, indem es neben dem Passwort einen weiteren Bestätigungsfaktor erfordert, wie beispielsweise einen Code, der an ein mobiles Gerät gesendet wird. 
 
-![](/Bilder/passwords.webp)
+![alt text](../Media/passwords.webp)
 
 Bildquelle: https://cdn.prod.website-files.com/65f7f0027cb1900111ab2e6f/66dacaddaef590ecba2db584_DS_Blog_Admin-Passwoerter-sicher-speichern.webp
 
