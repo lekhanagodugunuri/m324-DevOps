@@ -1,5 +1,7 @@
 package com.example.code;
-
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.http.MediaType;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -52,6 +54,7 @@ class LocalityControllerTests {
                 .andExpect(jsonPath("$.population").value(5000));
     }
 
+
     @Test
     @DisplayName("Happy Path: Create Locality")
     void testCreateLocality_HappyPath() throws Exception {
@@ -66,4 +69,21 @@ class LocalityControllerTests {
 
                 .andExpect(jsonPath("$.population").value(5000));
     }
+
+    @Test
+    @DisplayName("Sad Path: Create Locality - Duplicate Postal Code")
+    void testCreateLocality_DuplicatePostalCode() throws Exception {
+        when(localityService.createLocality(any(Locality.class)))
+                .thenThrow(new IllegalArgumentException("Postal code already exists: 12345"));
+
+        String json = "{\"name\": \"Test City\", \"zip_code\": \"12345\", \"founding_date\": \"2020-01-01\", \"population\": 5000}";
+        mockMvc.perform(post("/api/localities")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Postal code already exists: 12345"));
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.code;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,11 @@ public class LocalityController {
     public ResponseEntity<Locality> createLocality(@RequestBody Locality locality) {
         Locality createdLocality = localityService.createLocality(locality);
         return ResponseEntity.ok(createdLocality);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ex.getMessage();
     }
 }
