@@ -3,6 +3,7 @@
 ## Theorieinhalte
 
 T1-Theorie-CALMS: [T1-CALMS](/T1-CALMS.md)
+T5 Theorie: [T5-Theorie](/Theorie/T5-CD.md)
 
 
 ## Themenblöcke
