@@ -1,5 +1,6 @@
-package com.example.code;
+package com.example.code.repository;
 
+import com.example.code.Locality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

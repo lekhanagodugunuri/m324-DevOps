@@ -1,5 +1,7 @@
-package com.example.code;
+package com.example.code.controller;
 
+import com.example.code.Locality;
+import com.example.code.service.LocalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
