@@ -23,12 +23,22 @@ public class LocalityService {
 
     @Transactional
     public Locality createLocality(Locality locality) {
+        if (locality.getName() == null || locality.getName().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        if (locality.getPostalCode() == null || locality.getPostalCode().isEmpty()) {
+            throw new IllegalArgumentException("Postal code cannot be null or empty");
+        }
+        if (locality.getFoundingDate() == null) {
+            throw new IllegalArgumentException("Founding date cannot be null");
+        }
+        if (locality.getPopulation() == null || locality.getPopulation() <= 0) {
+            throw new IllegalArgumentException("Population must be a valid positive number");
+        }
         if (localityRepository.findByPostalCode(locality.getPostalCode()).isPresent()) {
             throw new IllegalArgumentException("Postal code already exists: " + locality.getPostalCode());
         }
-        if (locality.getPopulation() == null || locality.getPopulation() < 0) {
-            throw new IllegalArgumentException("Population must be a valid positive number");
-        }
         return localityRepository.save(locality);
     }
+
 }
