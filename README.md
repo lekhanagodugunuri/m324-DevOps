@@ -2,8 +2,11 @@
 
 ## Theorieinhalte
 
-T1-Theorie-CALMS: [T1-CALMS](/T1-CALMS.md)
-T5 Theorie: [T5-Theorie](/Theorie/T5-CD.md)
+- T1-Theorie-CALMS: [T1-CALMS](/T1-CALMS.md)
+- T2:[T2-Theorie](/Theorie/T2-TheThreeWays.md)
+- T3:[T3-Theorie](/Theorie/T3-DevOps-Prozesse.md)
+- T4:[T4-Theorie](/Theorie/T4-CI.md)
+- T5 Theorie: [T5-Theorie](/Theorie/T5-CD.md)
 
 
 ## Themenblöcke
