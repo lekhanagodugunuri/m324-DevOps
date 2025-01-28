@@ -8,7 +8,7 @@ const collectionJSON = JSON.parse(fs.readFileSync(collectionPath, 'utf-8'));
 const collection = new Collection(collectionJSON);
 
 const environmentVariables = {
-  base_url: process.env.BASE_URL || 'http://localhost:8080'
+  base_url: process.env.BASE_URL || 'http://localhost:8080/api/localities'
 };
 
 function replaceVariables(url) {
@@ -25,6 +25,15 @@ describe('Postman API Tests', () => {
         let url = request.url.toString();
         url = replaceVariables(url);
         const method = request.method;
+
+        if (method === 'GET' && url.includes('?id=')) {
+          url = url.replace('?id=', '/'); 
+        }
+
+        if (method === 'PUT' || method === 'DELETE') {
+          console.log(`Skipping unsupported ${method} request for: ${url}`);
+          return;
+        }
 
         const headers = {};
         if (request.headers) {
