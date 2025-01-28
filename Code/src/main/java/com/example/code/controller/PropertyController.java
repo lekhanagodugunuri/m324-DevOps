@@ -15,7 +15,6 @@ public class PropertyController {
     @Autowired
     private PropertyService propertyService;
 
-    // This method handles GET requests to /api/properties
     @GetMapping
     public ResponseEntity<List<Property>> getAllProperties() {
         List<Property> properties = propertyService.getAllProperties();

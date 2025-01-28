@@ -11,23 +11,23 @@ public class Property {
     private Long id;
 
     @Column(nullable = false)
-    private String propertyType;  // Type of the property (e.g., House, Apartment)
+    private String propertyType;
 
     @Column(nullable = false)
-    private Double rooms;  // Number of rooms
+    private Double rooms;
 
     @Column(nullable = false)
-    private Double area;  // Area in square meters
+    private Double area;
 
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
-    private Locality locality;  // Reference to the locality (foreign key)
+    private Locality locality;
 
     @Column(nullable = false)
-    private Double price;  // Price of the property
+    private Double price;
 
     @Column
-    private String saleDate;  // Date when the property was sold (optional)
+    private String saleDate;
 
     // Getters and Setters
     public Long getId() {
