@@ -1,66 +1,46 @@
-const fs = require('fs');
-const path = require('path');
-const { Collection } = require('postman-collection');
-const axios = require('axios');
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
 
-const collectionPath = path.resolve(__dirname, '../Postman/Locality_324.postman_collection.json');
-const collectionJSON = JSON.parse(fs.readFileSync(collectionPath, 'utf-8'));
-const collection = new Collection(collectionJSON);
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
 
-const environmentVariables = {
-  base_url: process.env.BASE_URL || 'http://localhost:8080/api/localities'
-};
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '23'
 
-function replaceVariables(url) {
-  return url.replace(/{{(.*?)}}/g, (match, varName) => {
-    return environmentVariables[varName] || match;
-  });
-}
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle
 
-describe('Postman API Tests', () => {
-  collection.items.each((item) => {
-    test(`${item.name}`, async () => {
-      if (item.request) {
-        const request = item.request;
-        let url = request.url.toString();
-        url = replaceVariables(url);
-        const method = request.method;
+      - name: Grant execute permissions for Gradle Wrapper
+        run: chmod +x ./Code/gradlew
 
-        if (method === 'GET' && url.includes('?id=')) {
-          url = url.replace('?id=', '/'); 
-        }
+      - name: Build with Gradle
+        run: ./gradlew build
+        working-directory: ./Code
 
-        if (method === 'PUT' || method === 'DELETE') {
-          console.log(`Skipping unsupported ${method} request for: ${url}`);
-          return;
-        }
+      - name: Start Spring Boot Application
+        run: ./gradlew bootRun &
+        working-directory: ./Code
 
-        const headers = {};
-        if (request.headers) {
-          request.headers.each((header) => {
-            headers[header.key] = header.value;
-          });
-        }
+      - name: Wait for API to be ready
+        run: sleep 15  # Wait 15 seconds for the backend to start
 
-        let data = null;
-        if (request.body && request.body.mode === 'raw') {
-          data = request.body.raw;
-        }
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-        const options = {
-          method,
-          url,
-          headers,
-          data,
-        };
+      - name: Install npm dependencies
+        run: npm install
 
-        console.log(`Testing ${method} ${url} ...`);
-
-        const response = await axios(options);
-
-        expect(response.status).toBeGreaterThanOrEqual(200);
-        expect(response.status).toBeLessThan(300);
-      }
-    });
-  });
-});
+      - name: Run Postman Tests with Jest
+        run: npm run test:postman
