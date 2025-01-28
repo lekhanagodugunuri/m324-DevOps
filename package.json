@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "axios": "^1.7.9",
+    "jest": "^29.7.0",
+    "postman-collection": "^4.5.0"
+  }
+}
