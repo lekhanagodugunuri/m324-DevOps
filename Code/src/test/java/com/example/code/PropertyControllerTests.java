@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.http.MediaType;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +49,6 @@ class PropertyControllerTests {
         sampleProperty.setSaleDate("2025-01-15");
     }
 
-    // Create Property
     @Test
     @DisplayName("Happy Path: Create Property")
     void testCreateProperty_HappyPath() throws Exception {
@@ -64,7 +62,6 @@ class PropertyControllerTests {
                 .andExpect(jsonPath("$.price").value(450000.0));
     }
 
-    // Get All Properties
     @Test
     @DisplayName("Happy Path: Get All Properties")
     void testGetAllProperties_HappyPath() throws Exception {
