@@ -8,7 +8,7 @@ const collectionJSON = JSON.parse(fs.readFileSync(collectionPath, 'utf-8'));
 const collection = new Collection(collectionJSON);
 
 const environmentVariables = {
-  base_url: process.env.BASE_URL || 'http://localhost:8080'
+  base_url: process.env.BASE_URL || 'http://localhost:8080/api/localities'
 };
 
 function replaceVariables(url) {
