@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test:postman": "jest jest-tests/postman.test.js"
+  },
   "devDependencies": {
     "axios": "^1.7.9",
     "jest": "^29.7.0",
