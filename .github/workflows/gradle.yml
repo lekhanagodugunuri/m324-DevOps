@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '23' 
+          java-version: '23'
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
@@ -29,7 +29,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle
-  
+
       - name: Grant execute permissions for Gradle Wrapper
         run: chmod +x ./Code/gradlew
 
@@ -37,6 +37,17 @@ jobs:
         run: ./gradlew build
         working-directory: ./Code
 
-      - name: Run Tests
+      - name: Run Gradle Tests
         run: ./gradlew test
         working-directory: ./Code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run Postman Tests with Jest
+        run: npm run test:postman
