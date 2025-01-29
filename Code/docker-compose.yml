@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: /Dockerfile  # Dockerfile for Spring Boot app
+    ports:
+      - "8080:8080"  # Expose Spring Boot app on port 8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres  # Connect to db service
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
+    depends_on:
+      - db  # Wait for db service to start before starting the app
+
+  db:
+    build:
+      context: db
+      dockerfile: ./Dockerfile  # Dockerfile for PostgreSQL database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"  # Expose PostgreSQL on port 5432
+    volumes:
+      - ./schema.sql:/docker-entrypo
